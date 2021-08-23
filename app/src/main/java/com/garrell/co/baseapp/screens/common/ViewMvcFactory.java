@@ -9,6 +9,8 @@ import com.garrell.co.baseapp.screens.common.dialogs.prompt.PromptViewMvc;
 import com.garrell.co.baseapp.screens.common.dialogs.prompt.PromptViewMvcImpl;
 import com.garrell.co.baseapp.screens.home.HomeViewMvc;
 import com.garrell.co.baseapp.screens.home.HomeViewMvcImpl;
+import com.garrell.co.gematriacalculator.screens.calculator.view.CalculatorViewMvc;
+import com.garrell.co.gematriacalculator.screens.calculator.view.CalculatorViewMvcImpl;
 
 public class ViewMvcFactory {
 
@@ -28,5 +30,9 @@ public class ViewMvcFactory {
 
     public HomeViewMvc newHomeViewMvc(ViewGroup container) {
         return new HomeViewMvcImpl(layoutInflater, container);
+    }
+
+    public CalculatorViewMvc newCalculatorViewMvc(ViewGroup container) {
+        return new CalculatorViewMvcImpl(layoutInflater, container);
     }
 }

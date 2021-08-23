@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/alef"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/alef"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/beis"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/beis"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/bet"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/alef"
+        app:layout_constraintRight_toLeftOf="@id/gimmel"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/gimmel"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/gimmel"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/beis"
+        app:layout_constraintRight_toLeftOf="@id/dalet"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dalet"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/dalet"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/gimmel"
+        app:layout_constraintRight_toLeftOf="@id/heh"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/heh"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/heh"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/dalet"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/vav"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/vav"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/beis"
+        app:layout_constraintTop_toBottomOf="@id/alef" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/zayin"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/zayin"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/vav"
+        app:layout_constraintRight_toLeftOf="@id/ches"
+        app:layout_constraintTop_toBottomOf="@id/alef" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ches"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/ches"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/zayin"
+        app:layout_constraintRight_toLeftOf="@id/tes"
+        app:layout_constraintTop_toBottomOf="@id/alef" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/tes"
+        style="@style/Hebrew.Keyboard.Button"
+        android:text="@string/tes"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/ches"
+        app:layout_constraintRight_toRightOf="@id/space"
+        app:layout_constraintTop_toBottomOf="@id/alef" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintLeft_toRightOf="@id/tes"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/alef"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
