@@ -6,4 +6,11 @@
        <item name="android:layout_width">0dp</item>
        <item name="android:layout_height">0dp</item>
    </style>
+
+    <style name="Hebrew.Keyboard.Backspace.Button" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textSize">@dimen/hebrew_keyboard_text_size</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
 </resources>

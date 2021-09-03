@@ -15,7 +15,7 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
         setRootView(view);
 
         findViewById(R.id.hebrew_input);
-        findViewById(R.id.alef).setOnClickListener(v -> {
+        findViewById(R.id.row_0_column_0).setOnClickListener(v -> {
         });
     }
 
