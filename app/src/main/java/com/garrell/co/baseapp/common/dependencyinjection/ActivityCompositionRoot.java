@@ -10,6 +10,8 @@ import com.garrell.co.baseapp.R;
 import com.garrell.co.baseapp.screens.common.ViewMvcFactory;
 import com.garrell.co.baseapp.screens.common.dialogs.DialogsManager;
 import com.garrell.co.baseapp.screens.common.screennavigator.ScreensNavigator;
+import com.garrell.co.gematriacalculator.gematria.encoding.misparhechrechi.MispharHechrechiKeyboardMap;
+import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCharacterMapping;
 import com.ncapdevi.fragnav.FragNavController;
 import com.garrell.co.baseapp.common.permissions.PermissionsHelper;
 import com.techyourchance.dialoghelper.DialogHelper;
@@ -59,5 +61,9 @@ public class ActivityCompositionRoot extends ComponentCompositionRoot {
 
     public PermissionsHelper getPermissionsHelper() {
         return new PermissionsHelper(activity);
+    }
+
+    public KeyboardCharacterMapping getKeyboardCharacterMapping() {
+        return new MispharHechrechiKeyboardMap();
     }
 }

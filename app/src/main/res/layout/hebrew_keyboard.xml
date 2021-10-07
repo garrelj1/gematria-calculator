@@ -15,7 +15,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_0_column_0"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/alef"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_0_column_1"
         app:layout_constraintRight_toRightOf="parent"
@@ -24,7 +23,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_0_column_1"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/bet"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_0_column_2"
         app:layout_constraintRight_toLeftOf="@id/row_0_column_0"
@@ -33,7 +31,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_0_column_2"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/gimmel"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_0_column_3"
         app:layout_constraintRight_toLeftOf="@id/row_0_column_1"
@@ -42,7 +39,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_0_column_3"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/dalet"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_0_column_4"
         app:layout_constraintRight_toLeftOf="@id/row_0_column_2"
@@ -51,7 +47,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_0_column_4"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/heh"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/row_0_column_3"
@@ -66,7 +61,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_1_column_0"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/vav"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_1_column_1"
         app:layout_constraintRight_toRightOf="parent"
@@ -75,7 +69,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_1_column_1"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/zayin"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_1_column_2"
         app:layout_constraintRight_toLeftOf="@id/row_1_column_0"
@@ -84,7 +77,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_1_column_2"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/ches"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_1_column_3"
         app:layout_constraintRight_toLeftOf="@id/row_1_column_1"
@@ -93,7 +85,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_1_column_3"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/tes"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_1_column_4"
         app:layout_constraintRight_toLeftOf="@id/row_1_column_2"
@@ -102,7 +93,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_1_column_4"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/yud"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/row_1_column_3"
@@ -117,7 +107,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_2_column_0"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/kaf"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_2_column_1"
         app:layout_constraintRight_toRightOf="parent"
@@ -125,7 +114,6 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_2_column_1"
-        android:text="@string/lamed"
         style="@style/Hebrew.Keyboard.Button"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_2_column_2"
@@ -135,7 +123,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_2_column_2"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/mem"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_2_column_3"
         app:layout_constraintRight_toLeftOf="@id/row_2_column_1"
@@ -144,7 +131,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_2_column_3"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/nun"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_2_column_4"
         app:layout_constraintRight_toLeftOf="@id/row_2_column_2"
@@ -153,7 +139,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_2_column_4"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/samekh"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/row_2_column_3"
@@ -168,7 +153,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_3_column_0"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/ayin"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_3_column_1"
         app:layout_constraintRight_toRightOf="parent"
@@ -177,7 +161,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_3_column_1"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/pe"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_3_column_2"
         app:layout_constraintRight_toLeftOf="@id/row_3_column_0"
@@ -186,7 +169,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_3_column_2"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/tsadi"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_3_column_3"
         app:layout_constraintRight_toLeftOf="@id/row_3_column_1"
@@ -195,7 +177,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_3_column_3"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/kuf"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_3_column_4"
         app:layout_constraintRight_toLeftOf="@id/row_3_column_2"
@@ -204,7 +185,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_3_column_4"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/reish"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/row_3_column_3"
@@ -219,7 +199,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_4_column_0"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/shin"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_4_column_1"
         app:layout_constraintRight_toRightOf="parent"
@@ -228,7 +207,6 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/row_4_column_1"
         style="@style/Hebrew.Keyboard.Button"
-        android:text="@string/tav"
         app:layout_constraintDimensionRatio="H,1:1"
         app:layout_constraintLeft_toRightOf="@id/row_4_column_2"
         app:layout_constraintRight_toLeftOf="@id/row_4_column_0"
