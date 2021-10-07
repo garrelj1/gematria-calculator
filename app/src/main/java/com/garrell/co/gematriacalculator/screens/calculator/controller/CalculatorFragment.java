@@ -45,8 +45,23 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
     }
 
     @Override
-    public void onCharacterEntered(String entry) {
-        Timber.i("Entered %s", entry);
+    public void onResume() {
+        viewMvc.registerListener(this);
+
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        viewMvc.unregisterListener(this);
+
+        super.onPause();
+    }
+
+    @Override
+    public void onCharacterEntered(String entry, Character newChar) {
+        Timber.i("Entered %s with new character to add %s", entry, newChar);
+        viewMvc.setHebrewInput(entry + newChar);
     }
 
 }

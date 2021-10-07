@@ -1,14 +1,11 @@
 package com.garrell.co.gematriacalculator.screens.calculator.view;
 
-import android.util.AttributeSet;
-import android.util.Pair;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
@@ -18,24 +15,17 @@ import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCoordinate;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.Map;
-import java.util.Set;
 
 public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewMvc.Listener>
         implements CalculatorViewMvc {
 
+    private final TextView tv;
+
     public CalculatorViewMvcImpl(LayoutInflater layoutInflater, ViewGroup container) {
-        View view = layoutInflater.inflate(R.layout.dynamic_keyboard, container, false);
+        View view = layoutInflater.inflate(R.layout.layout_calculator, container, false);
         setRootView(view);
 
-        /*
-        findViewById(R.id.backspace).setOnClickListener(v -> {
-            removeCharFromInputAndNotify();
-        });
-
-        findViewById(R.id.row_0_column_0).setOnClickListener(v -> {
-            String alef = getString(R.string.alef);
-        });
-         */
+        tv = findViewById(R.id.hebrew_input);
     }
 
     private void addCharToInputAndNotify(char in) {
@@ -61,7 +51,6 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
         if (oldInput.length() == 0)
             return "";
 
-        TextView tv = findViewById(R.id.hebrew_input);
         return "";
     }
 
@@ -75,34 +64,94 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
         tv.setText(newInput);
     }
 
-    private void notifyListenersInputUpdated(String newInput) {
+    private void notifyCharacterButtonClicked(Character newChar) {
+        String oldInput = tv.getText().toString();
         for (Listener l : getListeners())
-            l.onCharacterEntered(newInput);
+            l.onCharacterEntered(oldInput, newChar);
+    }
+
+    private void notifyListenersInputUpdated(String newInput) {
     }
 
     @Override
     public void layoutKeyboard(Map<KeyboardCoordinate, Character> keyboardMapping) {
-        ConstraintLayout parentLayout = findViewById(R.id.keyboard);
+        ConstraintLayout parent = findViewById(R.id.keyboard_layout);
         ConstraintSet set = new ConstraintSet();
 
         for (Map.Entry<KeyboardCoordinate, Character> entry : keyboardMapping.entrySet()) {
             int row = entry.getKey().row;
             int column = entry.getKey().column;
 
-            MaterialButton childView = new MaterialButton(getContext());
+            ContextThemeWrapper themeWrapper = new ContextThemeWrapper(getContext(), R.style.Hebrew_Keyboard_Button);
+            MaterialButton childView = new MaterialButton(themeWrapper);
+            int id = getViewId(row, column);
+            childView.setId(id);
+
+            childView.setOnClickListener(v -> {
+                notifyCharacterButtonClicked(entry.getValue());
+            });
 
             // set view id, else getId() returns -1
-            childView.setId(row + column);
             childView.setText(entry.getValue().toString());
-            parentLayout.addView(childView, row);
 
-            set.clone(parentLayout);
+            parent.addView(childView, 0);
+
+            set.clone(parent);
+            set.setDimensionRatio(childView.getId(), "H,1:1");
+
             if (row == 0)
+                set.connect(
+                        childView.getId(), ConstraintSet.RIGHT,
+                        parent.getId(), ConstraintSet.RIGHT,
+                        50
+                );
+
+            if (column == 0)
+                set.connect(
+                        childView.getId(), ConstraintSet.TOP,
+                        R.id.numerical_value, ConstraintSet.BOTTOM,
+                        50);
+
+            if (column > 0 && column < 5) {
+                set.connect(
+                        childView.getId(), ConstraintSet.RIGHT,
+                        getIdOfViewToRight(row, column), ConstraintSet.LEFT,
+                        50);
+                set.connect(
+                        childView.getId(), ConstraintSet.TOP,
+                        getIdOfViewToRight(row, column), ConstraintSet.TOP
+                );
+            }
+
+
+            // Do this for all views
+            set.applyTo(parent);
+
             // connect start and end point of views, in this case top of child to top of parent.
-            set.connect(childView.getId(), ConstraintSet.TOP, parentLayout.getId(), ConstraintSet.TOP, 60);
             // ... similarly add other constraints
-            set.applyTo(parentLayout);
         }
+
+        findViewById(R.id.backspace).setOnClickListener(v -> {
+            removeCharFromInputAndNotify();
+        });
+
+    }
+
+    @Override
+    public void setHebrewInput(String input) {
+        tv.setText(input);
+    }
+
+    private int getViewId(int row, int column) {
+        return ("row" + row + "column" + column).hashCode();
+    }
+
+    private int getIdOfViewToRight(int row, int column) {
+        if (column == 0)
+            throw new IndexOutOfBoundsException();
+
+        int columnToTheRight = column - 1;
+        return getViewId(row, columnToTheRight);
     }
 
 }
