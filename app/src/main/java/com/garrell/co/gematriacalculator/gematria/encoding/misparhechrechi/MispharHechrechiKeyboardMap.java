@@ -13,6 +13,14 @@ public class MispharHechrechiKeyboardMap implements KeyboardCharacterMapping {
     public MispharHechrechiKeyboardMap() {
         keyboardMapping.put(new KeyboardCoordinate(0, 0), (char) 0x05d0);
         keyboardMapping.put(new KeyboardCoordinate(0, 1), (char) 0x05d1);
+        keyboardMapping.put(new KeyboardCoordinate(0, 2), (char) 0x05d2);
+        keyboardMapping.put(new KeyboardCoordinate(0, 3), (char) 0x05d3);
+        keyboardMapping.put(new KeyboardCoordinate(0, 4), (char) 0x05d4);
+        keyboardMapping.put(new KeyboardCoordinate(1, 0), (char) 0x05d5);
+        keyboardMapping.put(new KeyboardCoordinate(1, 1), (char) 0x05d6);
+        keyboardMapping.put(new KeyboardCoordinate(1, 2), (char) 0x05d7);
+        keyboardMapping.put(new KeyboardCoordinate(1, 3), (char) 0x05d8);
+        keyboardMapping.put(new KeyboardCoordinate(1, 4), (char) 0x05d9);
     }
 
     @Override

@@ -7,9 +7,9 @@ import java.util.Map;
 
 public interface CalculatorViewMvc extends ObservableViewMvc<CalculatorViewMvc.Listener> {
 
-
     interface Listener {
-        void onCharacterEntered(String entry, Character newChar);
+        void onCharacterEntered(Character newChar);
+        void onBackspaceClicked();
     }
 
     void layoutKeyboard(Map<KeyboardCoordinate, Character> keyboardMapping);
