@@ -10,6 +10,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
+    <string name="back_arrow_unicode">\u2190</string>
+
     <!-- hebrew alphabet in unicode -->
     <string name="alef">\u05d0</string>
     <string name="bet">\u05d1</string>
@@ -20,4 +22,22 @@
     <string name="zayin">\u05d6</string>
     <string name="ches">\u05d7</string>
     <string name="tes">\u05d8</string>
+    <string name="yud">\u05d9</string>
+    <string name="final_kaf">\u05da</string>
+    <string name="kaf">\u05db</string>
+    <string name="lamed">\u05dc</string>
+    <string name="final_mem">\u05dd</string>
+    <string name="mem">\u05de</string>
+    <string name="final_nun">\u05df</string>
+    <string name="nun">\u05e0</string>
+    <string name="samekh">\u05e1</string>
+    <string name="ayin">\u05e2</string>
+    <string name="final_pe">\u05e3</string>
+    <string name="pe">\u05e4</string>
+    <string name="final_tsadi">\u05e5</string>
+    <string name="tsadi">\u05e6</string>
+    <string name="kuf">\u05e7</string>
+    <string name="reish">\u05e8</string>
+    <string name="shin">\u05e9</string>
+    <string name="tav">\u05ea</string>
 </resources>

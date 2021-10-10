@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.garrell.co.baseapp.screens.common.ViewMvcFactory;
 import com.garrell.co.baseapp.screens.common.controller.BaseFragment;
+import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCharacterMapping;
 import com.garrell.co.gematriacalculator.screens.calculator.view.CalculatorViewMvc;
 
 import timber.log.Timber;
@@ -17,6 +18,7 @@ import timber.log.Timber;
 public class CalculatorFragment extends BaseFragment implements CalculatorViewMvc.Listener {
 
     private CalculatorViewMvc viewMvc;
+    private KeyboardCharacterMapping keyboard;
     private ViewMvcFactory viewMvcFactory;
 
     public static CalculatorFragment newInstance() {
@@ -27,6 +29,7 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewMvcFactory = getControllerCompositionRoot().getViewMvcFactory();
+        keyboard = getControllerCompositionRoot().getKeyboardCharacterMapping();
     }
 
     @Nullable
@@ -35,12 +38,35 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         viewMvc = viewMvcFactory.newCalculatorViewMvc(container);
+
+        viewMvc.layoutKeyboard(keyboard.getMap());
+
         return viewMvc.getRootView();
     }
 
     @Override
-    public void onCharacterEntered(String entry) {
-        Timber.i("Entered %s", entry);
+    public void onResume() {
+        viewMvc.registerListener(this);
+
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        viewMvc.unregisterListener(this);
+
+        super.onPause();
+    }
+
+    @Override
+    public void onCharacterEntered(Character newChar) {
+        Timber.i("Entered %s with", newChar);
+        viewMvc.setHebrewInput(newChar.toString());
+    }
+
+    @Override
+    public void onBackspaceClicked() {
+        viewMvc.setHebrewInput("");
     }
 
 }
