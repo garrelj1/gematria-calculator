@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 import com.garrell.co.baseapp.screens.common.ViewMvcFactory;
 import com.garrell.co.baseapp.screens.common.controller.BaseFragment;
+import com.garrell.co.gematriacalculator.calculator.InputValueCalculatorUseCase;
 import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCharacterMapping;
 import com.garrell.co.gematriacalculator.screens.calculator.view.CalculatorViewMvc;
 
@@ -20,6 +21,7 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
     private CalculatorViewMvc viewMvc;
     private KeyboardCharacterMapping keyboard;
     private ViewMvcFactory viewMvcFactory;
+    private InputValueCalculatorUseCase valueCalculatorUseCase;
 
     public static CalculatorFragment newInstance() {
         return new CalculatorFragment();
