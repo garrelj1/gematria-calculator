@@ -1,6 +1,5 @@
 package com.garrell.co.gematriacalculator.screens.calculator.view;
 
-import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +24,7 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
     private static final int MAX_WIDTH_INDEX = 4;
 
     private final TextView input;
+    private final TextView inputValue;
     private final ConstraintLayout viewGroup;
 
     public CalculatorViewMvcImpl(LayoutInflater layoutInflater, ViewGroup container) {
@@ -32,9 +32,11 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
         setRootView(view);
 
         input = findViewById(R.id.hebrew_input);
+        inputValue = findViewById(R.id.numerical_value);
         viewGroup = findViewById(R.id.keyboard_layout);
 
         findViewById(R.id.backspace).setOnClickListener(this::notifyBackspaceClicked);
+        findViewById(R.id.clear).setOnClickListener(this::notifyClearClicked);
     }
 
     @Override
@@ -42,27 +44,37 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
         input.setText(txt);
     }
 
+    @Override
+    public void setInputValue(int value) {
+        inputValue.setText(Integer.toString(value));
+    }
+
     private void notifyBackspaceClicked(View view) {
         for (Listener l : getListeners())
             l.onBackspaceClicked();
     }
 
-    private void notifyCharacterButtonClicked(Character newChar) {
+    private void notifyCharacterButtonClicked(String newChar) {
         for (Listener l : getListeners())
             l.onCharacterEntered(newChar);
     }
 
-    @Override
-    public void layoutKeyboard(Map<KeyboardCoordinate, Character> keyboardMapping) {
+    private void notifyClearClicked(View view) {
+        for (Listener l : getListeners())
+            l.onClearClicked();
+    }
 
-        for (Map.Entry<KeyboardCoordinate, Character> entry : keyboardMapping.entrySet()) {
+    @Override
+    public void layoutKeyboard(Map<KeyboardCoordinate, String> keyboardMapping) {
+
+        for (Map.Entry<KeyboardCoordinate, String> entry : keyboardMapping.entrySet()) {
             addViewToParent(entry);
         }
 
         ConstraintLayout parent = findViewById(R.id.keyboard_layout);
         ConstraintSet set = new ConstraintSet();
 
-        for (Map.Entry<KeyboardCoordinate, Character> entry : keyboardMapping.entrySet()) {
+        for (Map.Entry<KeyboardCoordinate, String> entry : keyboardMapping.entrySet()) {
             int row = entry.getKey().row;
             int column = entry.getKey().column;
 
@@ -97,16 +109,12 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
                             parent.getId(), ConstraintSet.LEFT);
             }
 
-            // Do this for all views
             set.applyTo(parent);
-
-            // connect start and end point of views, in this case top of child to top of parent.
-            // ... similarly add other constraints
         }
 
     }
 
-    private void addViewToParent(Map.Entry<KeyboardCoordinate, Character> entry) {
+    private void addViewToParent(Map.Entry<KeyboardCoordinate, String> entry) {
         int row = entry.getKey().row;
         int column = entry.getKey().column;
 
@@ -121,7 +129,6 @@ public class CalculatorViewMvcImpl extends BaseObservableViewMvc<CalculatorViewM
 
         childView.setOnClickListener(v -> notifyCharacterButtonClicked(entry.getValue()));
 
-        // set view id, else getId() returns -1
         childView.setText(entry.getValue().toString());
 
         viewGroup.addView(childView, 0);

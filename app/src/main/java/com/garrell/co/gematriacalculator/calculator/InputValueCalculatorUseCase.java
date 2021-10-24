@@ -5,18 +5,18 @@ import com.garrell.co.baseapp.common.observable.BaseObservable;
 public class InputValueCalculatorUseCase extends BaseObservable<InputValueCalculatorUseCase.Listener> {
 
     public interface Listener {
-        void onUpdatedValue(int value);
+        void onUpdatedValue(String input, int value);
         void onInputInvalid();
     }
 
-    private String input;
+    private String input = "";
     private final Calculator calculator;
 
     public InputValueCalculatorUseCase(Calculator calculator) {
         this.calculator = calculator;
     }
 
-    public void addInput(Character c) {
+    public void addInput(String c) {
         input += c;
 
         if (calculator.isInputValid(input))
@@ -25,7 +25,18 @@ public class InputValueCalculatorUseCase extends BaseObservable<InputValueCalcul
             notifyInputInvalid();
     }
 
-    public void removeCharacterAndNotify() {
+    public void removeCharacter() {
+        removeCharacterAndNotify();
+    }
+
+    public void clearInput() {
+        input = "";
+
+        for (Listener l : getListeners())
+            l.onUpdatedValue(input, 0);
+    }
+
+    private void removeCharacterAndNotify() {
         if (input.isEmpty())
             return;
 
@@ -37,7 +48,7 @@ public class InputValueCalculatorUseCase extends BaseObservable<InputValueCalcul
         int value = calculator.calculate(input);
 
         for (Listener l : getListeners())
-            l.onUpdatedValue(value);
+            l.onUpdatedValue(input, value);
     }
 
     private void notifyInputInvalid() {

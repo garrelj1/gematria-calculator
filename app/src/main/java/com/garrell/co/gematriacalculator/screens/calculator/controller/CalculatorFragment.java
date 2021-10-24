@@ -16,11 +16,16 @@ import com.garrell.co.gematriacalculator.screens.calculator.view.CalculatorViewM
 
 import timber.log.Timber;
 
-public class CalculatorFragment extends BaseFragment implements CalculatorViewMvc.Listener {
+public class CalculatorFragment extends BaseFragment
+        implements CalculatorViewMvc.Listener,
+        InputValueCalculatorUseCase.Listener
+{
 
-    private CalculatorViewMvc viewMvc;
     private KeyboardCharacterMapping keyboard;
+
     private ViewMvcFactory viewMvcFactory;
+    private CalculatorViewMvc viewMvc;
+
     private InputValueCalculatorUseCase valueCalculatorUseCase;
 
     public static CalculatorFragment newInstance() {
@@ -32,6 +37,7 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
         super.onCreate(savedInstanceState);
         viewMvcFactory = getControllerCompositionRoot().getViewMvcFactory();
         keyboard = getControllerCompositionRoot().getKeyboardCharacterMapping();
+        valueCalculatorUseCase = getControllerCompositionRoot().getInputValueCalculatorUseCase();
     }
 
     @Nullable
@@ -49,6 +55,7 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
     @Override
     public void onResume() {
         viewMvc.registerListener(this);
+        valueCalculatorUseCase.registerListener(this);
 
         super.onResume();
     }
@@ -56,19 +63,36 @@ public class CalculatorFragment extends BaseFragment implements CalculatorViewMv
     @Override
     public void onPause() {
         viewMvc.unregisterListener(this);
+        valueCalculatorUseCase.unregisterListener(this);
 
         super.onPause();
     }
 
     @Override
-    public void onCharacterEntered(Character newChar) {
+    public void onCharacterEntered(String newChar) {
         Timber.i("Entered %s with", newChar);
-        viewMvc.setHebrewInput(newChar.toString());
+        valueCalculatorUseCase.addInput(newChar);
     }
 
     @Override
     public void onBackspaceClicked() {
-        viewMvc.setHebrewInput("");
+        valueCalculatorUseCase.removeCharacter();
+    }
+
+    @Override
+    public void onClearClicked() {
+        valueCalculatorUseCase.clearInput();
+    }
+
+    @Override
+    public void onUpdatedValue(String input, int value) {
+        viewMvc.setHebrewInput(input);
+        viewMvc.setInputValue(value);
+    }
+
+    @Override
+    public void onInputInvalid() {
+        viewMvc.setInputValue(0);
     }
 
 }

@@ -8,12 +8,14 @@ import java.util.Map;
 public interface CalculatorViewMvc extends ObservableViewMvc<CalculatorViewMvc.Listener> {
 
     interface Listener {
-        void onCharacterEntered(Character newChar);
+        void onCharacterEntered(String newChar);
         void onBackspaceClicked();
+        void onClearClicked();
     }
 
-    void layoutKeyboard(Map<KeyboardCoordinate, Character> keyboardMapping);
+    void layoutKeyboard(Map<KeyboardCoordinate, String> keyboardMapping);
 
     void setHebrewInput(String input);
 
+    void setInputValue(int value);
 }

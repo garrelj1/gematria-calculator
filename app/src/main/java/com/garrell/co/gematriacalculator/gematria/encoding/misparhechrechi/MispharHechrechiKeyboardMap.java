@@ -1,5 +1,6 @@
 package com.garrell.co.gematriacalculator.gematria.encoding.misparhechrechi;
 
+import com.garrell.co.gematriacalculator.gematria.UnicodeHebrewAlphabet;
 import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCharacterMapping;
 import com.garrell.co.gematriacalculator.gematria.keyboard.KeyboardCoordinate;
 
@@ -8,23 +9,33 @@ import java.util.Map;
 
 public class MispharHechrechiKeyboardMap implements KeyboardCharacterMapping {
 
-    Map<KeyboardCoordinate, Character> keyboardMapping = new HashMap<>();
+    Map<KeyboardCoordinate, String> keyboardMapping = new HashMap<>();
 
     public MispharHechrechiKeyboardMap() {
-        keyboardMapping.put(new KeyboardCoordinate(0, 0), (char) 0x05d0);
-        keyboardMapping.put(new KeyboardCoordinate(0, 1), (char) 0x05d1);
-        keyboardMapping.put(new KeyboardCoordinate(0, 2), (char) 0x05d2);
-        keyboardMapping.put(new KeyboardCoordinate(0, 3), (char) 0x05d3);
-        keyboardMapping.put(new KeyboardCoordinate(0, 4), (char) 0x05d4);
-        keyboardMapping.put(new KeyboardCoordinate(1, 0), (char) 0x05d5);
-        keyboardMapping.put(new KeyboardCoordinate(1, 1), (char) 0x05d6);
-        keyboardMapping.put(new KeyboardCoordinate(1, 2), (char) 0x05d7);
-        keyboardMapping.put(new KeyboardCoordinate(1, 3), (char) 0x05d8);
-        keyboardMapping.put(new KeyboardCoordinate(1, 4), (char) 0x05d9);
+        keyboardMapping.put(new KeyboardCoordinate(0, 0), UnicodeHebrewAlphabet.alef);
+        keyboardMapping.put(new KeyboardCoordinate(0, 1), UnicodeHebrewAlphabet.bet);
+        keyboardMapping.put(new KeyboardCoordinate(0, 2), UnicodeHebrewAlphabet.gimmel);
+        keyboardMapping.put(new KeyboardCoordinate(0, 3), UnicodeHebrewAlphabet.dalet);
+        keyboardMapping.put(new KeyboardCoordinate(0, 4), UnicodeHebrewAlphabet.heh);
+        keyboardMapping.put(new KeyboardCoordinate(1, 0), UnicodeHebrewAlphabet.vav);
+        keyboardMapping.put(new KeyboardCoordinate(1, 1), UnicodeHebrewAlphabet.zayin);
+        keyboardMapping.put(new KeyboardCoordinate(1, 2), UnicodeHebrewAlphabet.ches);
+        keyboardMapping.put(new KeyboardCoordinate(1, 3), UnicodeHebrewAlphabet.tes);
+        keyboardMapping.put(new KeyboardCoordinate(1, 4), UnicodeHebrewAlphabet.yud);
+        keyboardMapping.put(new KeyboardCoordinate(2, 0), UnicodeHebrewAlphabet.kaf);
+        keyboardMapping.put(new KeyboardCoordinate(2, 1), UnicodeHebrewAlphabet.lamed);
+        keyboardMapping.put(new KeyboardCoordinate(2, 2), UnicodeHebrewAlphabet.mem);
+        keyboardMapping.put(new KeyboardCoordinate(2, 3), UnicodeHebrewAlphabet.nun);
+        keyboardMapping.put(new KeyboardCoordinate(2, 4), UnicodeHebrewAlphabet.samekh);
+        keyboardMapping.put(new KeyboardCoordinate(3, 0), UnicodeHebrewAlphabet.ayin);
+        keyboardMapping.put(new KeyboardCoordinate(3, 1), UnicodeHebrewAlphabet.pe);
+        keyboardMapping.put(new KeyboardCoordinate(3, 2), UnicodeHebrewAlphabet.tsadi);
+        keyboardMapping.put(new KeyboardCoordinate(3, 3), UnicodeHebrewAlphabet.kuf);
+        keyboardMapping.put(new KeyboardCoordinate(3, 4), UnicodeHebrewAlphabet.reish);
     }
 
     @Override
-    public Map<KeyboardCoordinate, Character> getMap() {
+    public Map<KeyboardCoordinate, String> getMap() {
         return keyboardMapping;
     }
 
