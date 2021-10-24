@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.garrell.co.baseapp.common.eventbus.EventBusPoster;
 import com.garrell.co.baseapp.common.eventbus.EventBusSubscriber;
+import com.garrell.co.gematriacalculator.calculator.InputValueCalculatorUseCase;
+import com.garrell.co.gematriacalculator.calculator.misparhechrechi.MisparHechrechiCalculator;
 import com.techyourchance.threadposter.BackgroundThreadPoster;
 import com.techyourchance.threadposter.UiThreadPoster;
 
@@ -40,5 +42,9 @@ public abstract class ComponentCompositionRoot {
 
     public EventBusSubscriber getEventBusSubscriber() {
         return applicationCompositionRoot.getEventBusSubscriber();
+    }
+
+    public InputValueCalculatorUseCase getInputValueCalculatorUseCase() {
+        return new InputValueCalculatorUseCase(new MisparHechrechiCalculator());
     }
 }

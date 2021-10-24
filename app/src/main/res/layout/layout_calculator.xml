@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/keyboard_layout"
-    android:layout_margin="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/hebrew_input"
@@ -27,12 +27,24 @@
         tools:layout_editor_absoluteY="304dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/backspace"
-        android:layout_width="100dp"
-        android:layout_height="75dp"
+        android:id="@+id/clear"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
         android:gravity="center"
-        android:text="@string/back_arrow_unicode"
-        android:textSize="40sp"
+        android:text="@string/c"
+        android:textSize="35sp"
+        app:layout_constraintRight_toLeftOf="@id/backspace"
+        app:layout_constraintTop_toBottomOf="@+id/hebrew_input" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/backspace"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/ic_baseline_backspace_24"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hebrew_input" />
 
